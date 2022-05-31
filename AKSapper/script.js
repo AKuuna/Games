@@ -74,7 +74,12 @@ board.forEach(row => {
             checkGameEnd();
 
         });
+        //double click
+        tile.element.addEventListener('dblclick', () =>{
+          doubleReveal(board, tile);
+          checkGameEnd();
 
+      });
         //right click
         tile.element.addEventListener('contextmenu', e => {
             e.preventDefault();
@@ -148,7 +153,6 @@ function markTile(tile) {
   
   //clickingTiles
 function tileReveal(board, tile) {
-    console.log(tile);
     if (
       tile.status !== TILE_STATUSES.HIDDEN
     ) {
@@ -188,7 +192,24 @@ function tileReveal(board, tile) {
   
     }
   
-  //tile Reveal
+//double click reveal
+function doubleReveal (board, tile) {
+  if (tile.status === TILE_STATUSES.NUMBER) {
+  console.log(tile.number);
+  const adjacentTiles = nearbyTilesReveal(board, tile);  
+  const mines = adjacentTiles.filter(t => t.mine);
+  const alreadyMarked = adjacentTiles.filter(m => m.marked);
+    if (mines.length === alreadyMarked.length)
+    { console.log("yes");
+    }
+    else {
+      return;
+    }
+}
+}
+
+
+  //tile Reveal function
     function nearbyTilesReveal(board, {x, y}){
       const tiles = [];
       for (let x1=-1; x1 <=1; x1++){
