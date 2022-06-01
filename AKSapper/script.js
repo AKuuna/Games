@@ -1,10 +1,35 @@
 //PLANS
-//1.
+let boardSize1 = prompt("How many rows you wanna?");
+const BOARD_SIZE = parseInt(boardSize1);
+
+const rowByColumns = BOARD_SIZE*BOARD_SIZE;
+
+let numberOfMines1 = prompt("With how many bombs should we go ?"+"board is"+BOARD_SIZE+"*"+BOARD_SIZE+"="+rowByColumns);
+const NUMBER_OF_MINES = parseInt(numberOfMines1);
 
 //Display
 
-const BOARD_SIZE = 10;
-const NUMBER_OF_MINES = 10;
+
+function noHelloKitty() {
+  document.getElementById('bo1').style.backgroundColor = "grey";
+  document.getElementById('bo1').style.color = "blue";
+  document.getElementById('bo1').style.border = "navy";
+  document.body.style.backgroundColor = "darkgrey";
+  document.getElementById("t1","t2").style.color = "darkblue";
+  document.getElementById("t2").style.color = "darkblue";
+}
+function ohMyGodness() {
+  document.getElementById('bo1').style.backgroundColor = "blue";
+  document.getElementById('bo1').style.color = "black";
+  document.getElementById('bo1').style.border = "grey";
+  document.body.style.backgroundColor = "rgb(7, 38, 12)";
+  document.getElementById("t1","t2").style.color = "lightblue";
+  document.getElementById("t2").style.color = "lightblue";
+}
+
+//
+//const BOARD_SIZE = 10;
+//const NUMBER_OF_MINES = 10;
 
 //tilestatuses
 const TILE_STATUSES = {
@@ -195,16 +220,20 @@ function tileReveal(board, tile) {
 //double click reveal
 function doubleReveal (board, tile) {
   if (tile.status === TILE_STATUSES.NUMBER) {
-  console.log(tile.number);
+  console.log(tile.element.textContent);
   const adjacentTiles = nearbyTilesReveal(board, tile);  
   const mines = adjacentTiles.filter(t => t.mine);
-  const alreadyMarked = adjacentTiles.filter(m => m.marked);
-    if (mines.length === alreadyMarked.length)
-    { console.log("yes");
-    }
-    else {
-      return;
-    }
+  const tilesAlreadyMarked = adjacentTiles.filter(tile => tile.status === TILE_STATUSES.MARKED);
+  console.log(tilesAlreadyMarked.length);
+  adjacentTiles.forEach(tileReveal.bind(null, board));
+  //could be easier, with no option to use it while not all the bombs are marked
+    //if (mines.length === tilesAlreadyMarked.length)
+    // { console.log("yes");
+    //  adjacentTiles.forEach(tileReveal.bind(null, board));
+    //}
+    //  else {
+    //   return;
+    // }
 }
 }
 
