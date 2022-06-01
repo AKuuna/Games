@@ -1,4 +1,16 @@
 //PLANS
+//1.Reveal tiles by double clicking -yes
+//2.Add color options -yes
+//3.Add text on a sides -yes
+//4.Add reload -yes
+//5.Add reload without new mines placement
+//6.Add board size and mines for player to decide -yes
+//7.Firstly make random board, then add some buttons/options to declare new board size and mines by the player
+//8.Add get back to hellish colors mode -yes
+//9.Place buttons where and how you want :( 
+
+
+//Questions
 let boardSize1 = prompt("How many rows you wanna?");
 const BOARD_SIZE = parseInt(boardSize1);
 
@@ -15,16 +27,32 @@ function noHelloKitty() {
   document.getElementById('bo1').style.color = "blue";
   document.getElementById('bo1').style.border = "navy";
   document.body.style.backgroundColor = "darkgrey";
-  document.getElementById("t1","t2").style.color = "darkblue";
-  document.getElementById("t2").style.color = "darkblue";
+  document.body.style.color="black";
+  document.getElementById('t1').style.color = "darkblue";
+  document.getElementById('t2').style.color = "darkblue";
+  let btn3 = document.getElementById("btn3");
+  btn3.removeAttribute("hidden");
 }
+
 function ohMyGodness() {
-  document.getElementById('bo1').style.backgroundColor = "blue";
+  document.getElementById('bo1').style.backgroundColor = "rgb(7, 58, 42)";
   document.getElementById('bo1').style.color = "black";
   document.getElementById('bo1').style.border = "grey";
   document.body.style.backgroundColor = "rgb(7, 38, 12)";
-  document.getElementById("t1","t2").style.color = "lightblue";
-  document.getElementById("t2").style.color = "lightblue";
+  document.getElementById('t1').style.color = "lightblue";
+  document.getElementById('t2').style.color = "lightblue";
+  let btn3 = document.getElementById("btn3");
+  btn3.removeAttribute("hidden");
+}
+
+function backHelloKitty() {
+  document.getElementById('bo1').style.backgroundColor = "rgb(94, 1, 75)";
+  document.getElementById('bo1').style.color = "darkdgrey";
+  document.getElementById('bo1').style.border = "grey";
+  document.body.style.backgroundColor = "black";
+  document.body.style.color="white";
+  document.getElementById('t1').style.color = "magenta";
+  document.getElementById('t2').style.color = "darkmagenta";
 }
 
 //
@@ -39,6 +67,11 @@ const TILE_STATUSES = {
     MARKED: "marked",
   
   }
+
+//only board reload -future
+//function reloadBoard (createBoard){
+ // this.board.updateDisplay();
+//}
 
  //board creation
  function createBoard (boardSize, numberOfMines) {
