@@ -18,7 +18,7 @@ body {
     margin: 20px;
 }
 
-.subtext {
+.subtext1 {
     color: darkmagenta;
     margin: 10px;
     font-size: 2rem;
@@ -26,7 +26,7 @@ body {
 
 .sidetext1a {     
     position: fixed;
-    top: 100px;
+    top: 30%;
     left: 10px;
     color: rgb(53, 108, 123);
     margin: 5px;
@@ -36,16 +36,16 @@ body {
 }
 .sidetext1b {     
     position: fixed;
-    top: 130px;
+    top: 35%;
     left: 10px;
     color: rgb(53, 108, 123);
     margin: 5px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     float: left;
 }
 .sidetext2a {     
     position: fixed;
-    top: 100px;
+    top: 30%;
     right: 10px;
     color: rgb(53, 108, 123);
     margin: 5px;
@@ -54,11 +54,11 @@ body {
 }
 .sidetext2b {     
     position: fixed;
-    top: 130px;
+    top: 35%;
     right: 10px;
     color: rgb(53, 108, 123);
     margin: 5px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     float: left;
 }
 

@@ -5,18 +5,24 @@
 //4.Add reload -yes
 //5.Add reload without new mines placement
 //6.Add board size and mines for player to decide -yes
-//7.Firstly make random board, then add some buttons/options to declare new board size and mines by the player
+//7.Firstly make random board, then add some buttons/options to declare new board size and mines by the player - yes
 //8.Add get back to hellish colors mode -yes
 //9.Place buttons where and how you want :( 
 
 
 //Questions
-let boardSize1 = prompt("How many rows you wanna?");
+let boardSize1;
+do { boardSize1 = prompt("How many rows you wanna?")}
+while (isNaN(boardSize1) ||  boardSize1 < 1 || boardSize1 > 50);
+
 const BOARD_SIZE = parseInt(boardSize1);
 
 const rowByColumns = BOARD_SIZE*BOARD_SIZE;
 
-let numberOfMines1 = prompt("With how many bombs should we go ?"+"board is"+BOARD_SIZE+"*"+BOARD_SIZE+"="+rowByColumns);
+let numberOfMines1;
+do {numberOfMines1 = prompt("With how many bombs should we go?"+"Board now is"+ BOARD_SIZE + " * "+ BOARD_SIZE + " = "+ rowByColumns)}
+while (isNaN(numberOfMines1) ||  numberOfMines1 < 1 || numberOfMines1 > (rowByColumns - 1));
+
 const NUMBER_OF_MINES = parseInt(numberOfMines1);
 
 //Display
@@ -55,7 +61,6 @@ function backHelloKitty() {
   document.getElementById('t2').style.color = "darkmagenta";
 }
 
-//
 //const BOARD_SIZE = 10;
 //const NUMBER_OF_MINES = 10;
 
