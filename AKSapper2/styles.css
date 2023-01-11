@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    align-items: center;
+    flex-direction: column;
+    color: blue;
+}
+
+.title {
+    color: magenta;
+    margin: 20px;
+}
+
+.subtext1 {
+    color: darkmagenta;
+    margin: 10px;
+    font-size: 2rem;
+}
+
+.sidetext1a {     
+    position: fixed;
+    top: 30%;
+    left: 10px;
+    color: rgb(53, 108, 123);
+    margin: 5px;
+    font-size: 2rem;
+    float: left;
+    
+}
+.sidetext1b {     
+    position: fixed;
+    top: 35%;
+    left: 10px;
+    color: rgb(53, 108, 123);
+    margin: 5px;
+    font-size: 1.8rem;
+    float: left;
+}
+.sidetext2a {     
+    position: fixed;
+    top: 30%;
+    right: 10px;
+    color: rgb(53, 108, 123);
+    margin: 5px;
+    font-size: 2rem;
+    float: left;
+}
+.sidetext2b {     
+    position: fixed;
+    top: 35%;
+    right: 10px;
+    color: rgb(53, 108, 123);
+    margin: 5px;
+    font-size: 1.8rem;
+    float: left;
+}
+
+.button1>* {
+    position: fixed;
+    top: 180px;
+    left: 40px;
+    background-color: #afafaf;
+    border: #3d3d3d;
+    color: rgba(47, 42, 42, 0.71);
+    padding: 15px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.button2>* {
+    position: fixed;
+    top: 180px;
+    right: 40px;
+    background-color: #afafaf;
+    border: #3d3d3d;
+    color: rgba(47, 42, 42, 0.71);
+    padding: 15px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.board {
+    display: inline-grid;
+    padding: 10px;
+    grid-template-columns: repeat(var(--size), 50px);
+    grid-template-rows: repeat(var(--size), 50px);
+    gap: 2px;
+    background-color: rgb(94, 1, 75);
+}
+
+.board>* {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(226, 209, 226);
+    border: 2px solid rgb(80, 80, 80);
+    user-select: none;
+    box-sizing: border-box; 
+}
+
+.board>[data-status="hidden"] {
+    background-color: #BBB;
+    cursor: pointer;
+}
+
+.board>[data-status="mine"] {
+    background-color: red;
+}
+
+.board>[data-status="number"] {
+    background-color: none;
+}
+
+.board>[data-status="marked"] {
+    background-color: blue;
+}
+
+.subtext1{
+    font-size: 10px;
+}
