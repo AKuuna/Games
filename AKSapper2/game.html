@@ -7,7 +7,7 @@
   <title>Minesweeper</title>
 </head>
 
-<body>
+<body onload="startGame(tableData)">
   <h3 class="title" id="t1">MineCuteMinesweeper</h3>
   <div class="subtext"id="t2">
     Mines left: <span data-mine-count>x</span>
@@ -30,6 +30,7 @@
   <button type= "button" class="button1" onclick= "backHelloKitty()" id="btn3" hidden>Want Hell-o-Kitty back?</button>
   <div class="board" id="bo1"></div>
   <script src="script.js"></script>
+ 
 </body>
 
 </html>

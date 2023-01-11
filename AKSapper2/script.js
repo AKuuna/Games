@@ -9,54 +9,6 @@
 //8.Add get back to hellish colors mode -yes
 //9.Place buttons where and how you want :( 
 
-
-//Questions
-// function redirect()
-//     {
-//     window.location.href = ".\game.html";
-//     };
-  
-//   function enableButton() 
-//   {
-//     x = document.getElementByClassName('start-btn').disabled = false;
-//   };
-
-// function takeValues() {
-//   let BOARD_SIZE = parseInt ( boardSize1= document.getElementById('number_of_rows').value);
-//   console.log(boardSize1);
-//   // do {document.getElementsByClassName(warning1).hidden = false}
-//   // while (isNaN(boardSize1) ||  boardSize1 < 1 || boardSize1 > 50);
-//   let NUMBER_OF_MINES = parseInt ( numberOfMines1 = document.getElementById('number_of_mines').value);
-//   console.log(numberOfMines1);
-//   // do {document.getElementsByClassName(warning2).hidden = false}
-//   // while (isNaN(boardSize1) ||  boardSize1 < 1 || boardSize1 > 50);
-//   enableButton();
-//   return  {
-//     BOARD_SIZE,
-//     NUMBER_OF_MINES
-//   };
-// };
-
-
-
-//NOT USED
-// function takeValues() {
-//   let boardSize1= document.getElementById('number_of_rows').value;
-//   do (document.getElementsByClassName('warning1').hidden = false)
-//   while (isNaN(boardSize1) ||  boardSize1 < 1 || boardSize1 > 50);
-//   let numberOfMines1 = document.getElementById('number_of_mines').value;
-//   do (document.getElementsByClassName('warning2').hidden = false)
-//   while (isNaN(numberOfMines1) ||  boardSize1 < 1 || boardSize1 > 50);
-//   enableButton();
-
-//  const BOARD_SIZE = parseInt(boardSize1);
-//  const NUMBER_OF_MINES = parseInt(numberOfMines1);
-//  const rowByColumns = BOARD_SIZE*BOARD_SIZE;
-// }
-
-
-import {BOARD_SIZE, NUMBER_OF_MINES} from "./menu.js";
-const rowByColumns = BOARD_SIZE*BOARD_SIZE;
 //Display
 
 
@@ -93,8 +45,51 @@ function backHelloKitty() {
   document.getElementById('t2').style.color = "darkmagenta";
 }
 
-//const BOARD_SIZE = 10;
-//const NUMBER_OF_MINES = 10;
+
+//Variables
+
+const minBoard = 2;
+const maxBoard = 40;
+const minMines = 1;
+const maxMines = "board size to the square minus 1";
+const defUno =`Min value is ${minBoard}, max is ${maxBoard}`;
+const defDos =`Min value is ${minMines}, max is ${maxMines}`;
+
+document.getElementById("p1").innerHTML = defUno;
+document.getElementById("p2").innerHTML = defDos;
+
+
+function takeValues()
+{   
+let boardSize1 = document.getElementById('number_of_rows').value;
+
+console.log(boardSize1);
+  
+let numberOfMines1 = document.getElementById('number_of_mines').value;
+
+console.log(numberOfMines1);
+
+if(isNaN(boardSize1) || boardSize1 < minBoard || boardSize1 > maxBoard ) 
+{
+  document.getElementById("warning1").removeAttribute("hidden");
+}
+else if(isNaN(numberOfMines1) || numberOfMines1 < minMines || numberOfMines1 > maxMines)
+{
+  document.getElementById("warning2").removeAttribute("hidden");
+}
+else {
+  enableButton();
+};
+tableData = [parseInt(boardSize1),parseInt(numberOfMines1)]
+console.log(tableData);
+return tableData;
+};
+
+function enableButton() 
+  { 
+    document.getElementById("start-btn").removeAttribute("hidden");
+  };
+
 
 //tilestatuses
 const TILE_STATUSES = {
@@ -102,13 +97,61 @@ const TILE_STATUSES = {
     MINE: "mine",
     NUMBER: "number",
     MARKED: "marked",
-  
   }
 
-//only board reload -future
-//function reloadBoard (createBoard){
- // this.board.updateDisplay();
-//}
+function showTable() {
+  document.getElementById("form1").setAttribute.hidden;
+  document.getElementById("game1").removeAttribute.hidden;
+}
+
+function startGame(tableData){
+  showTable();
+  console.log(tableData);
+  const BOARD_SIZE = tableData.indexOf[0];
+  const NUMBER_OF_MINES = tableData.indexOf[1];
+  const rowByColumns = BOARD_SIZE*BOARD_SIZE;
+  const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
+  const boardElement = document.querySelector(".board");
+  const minesLeftHeader = document.querySelector("[data-mine-count]");
+  const messageTextHeader = document.querySelector(".subtext");
+  console.log(board);
+  
+  boardElement.style.setProperty("--size", BOARD_SIZE);
+  minesLeftHeader.textContent = NUMBER_OF_MINES;
+  
+  board.forEach(row => {
+      row.forEach(tile => {
+          boardElement.append(tile.element);
+  
+          //inplans:colorwhenmouseisovertile
+          tile.element.addEventListener ( 'mouseover', () =>{
+              
+          });
+  
+          //left click
+          tile.element.addEventListener('click', () =>{
+              tileReveal(board, tile);
+              checkGameEnd();
+  
+          });
+          //double click
+          tile.element.addEventListener('dblclick', () =>{
+            doubleReveal(board, tile);
+            checkGameEnd();
+  
+        });
+          //right click
+          tile.element.addEventListener('contextmenu', e => {
+              e.preventDefault();
+              markTile(tile);
+              minesLeft();
+          });
+      })
+  })
+  
+}
+
+
 
  //board creation
  function createBoard (boardSize, numberOfMines) {
@@ -145,44 +188,44 @@ const TILE_STATUSES = {
   }
 
 //Board creation 
-const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
-const boardElement = document.querySelector(".board");
-const minesLeftHeader = document.querySelector("[data-mine-count]");
-const messageTextHeader = document.querySelector(".subtext");
-console.log(board);
+// const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
+// const boardElement = document.querySelector(".board");
+// const minesLeftHeader = document.querySelector("[data-mine-count]");
+// const messageTextHeader = document.querySelector(".subtext");
+// console.log(board);
 
-boardElement.style.setProperty("--size", BOARD_SIZE);
-minesLeftHeader.textContent = NUMBER_OF_MINES;
+// boardElement.style.setProperty("--size", BOARD_SIZE);
+// minesLeftHeader.textContent = NUMBER_OF_MINES;
 
-board.forEach(row => {
-    row.forEach(tile => {
-        boardElement.append(tile.element);
+// board.forEach(row => {
+//     row.forEach(tile => {
+//         boardElement.append(tile.element);
 
-        //inplans:colorwhenmouseisovertile
-        tile.element.addEventListener ( 'mouseover', () =>{
+//         //inplans:colorwhenmouseisovertile
+//         tile.element.addEventListener ( 'mouseover', () =>{
             
-        });
+//         });
 
-        //left click
-        tile.element.addEventListener('click', () =>{
-            tileReveal(board, tile);
-            checkGameEnd();
+//         //left click
+//         tile.element.addEventListener('click', () =>{
+//             tileReveal(board, tile);
+//             checkGameEnd();
 
-        });
-        //double click
-        tile.element.addEventListener('dblclick', () =>{
-          doubleReveal(board, tile);
-          checkGameEnd();
+//         });
+//         //double click
+//         tile.element.addEventListener('dblclick', () =>{
+//           doubleReveal(board, tile);
+//           checkGameEnd();
 
-      });
-        //right click
-        tile.element.addEventListener('contextmenu', e => {
-            e.preventDefault();
-            markTile(tile);
-            minesLeft();
-        });
-    })
-})
+//       });
+//         //right click
+//         tile.element.addEventListener('contextmenu', e => {
+//             e.preventDefault();
+//             markTile(tile);
+//             minesLeft();
+//         });
+//     })
+// })
 
 
 
