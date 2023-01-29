@@ -7,23 +7,31 @@ $(document).ready(function() {
     let currentPegCells = ["peg40","peg41","peg42","peg43"];
     let currentRow = 11;
     let possibleColors= [
-        dodgerblue, 
-        lightpink, 
-        darkgreen, 
-        crimson, 
-        aqua, 
-        purple
+        "dodgerblue", 
+        "lightpink", 
+        "darkgreen", 
+        "crimson", 
+        "aqua", 
+        "purple"
     ];
+    let isWinner = false;
 
-    let cellColor1, cellColor2, cellColor3, cellColor4;
+    let cellColor = [ ];
 
     const codeColors = [
         possibleColors[Math.floor(Math.random()*6)],
         possibleColors[Math.floor(Math.random()*6)],
         possibleColors[Math.floor(Math.random()*6)],
         possibleColors[Math.floor(Math.random()*6)],
-]; 
-console.log(codeColors);
+    ]; 
+
+    $(".code").css("grid-template-rows", "repeat(1, 50px)");
+    $(".code").css("grid-template-columns", "repeat(4, 50px)");
+    
+    $(".secret-color").css("border", "1px grey");
+    $(".secret-color").css("border-radius", "50%");
+
+    console.log(codeColors);
 
     for (let i = 0; i < 44; i++) {
         let cell = "<div class=\"boardCell\" id=board" + i +"></div>";
@@ -47,7 +55,7 @@ console.log(codeColors);
 
     $(".pegCell").css("border", "1px grey");
     $(".pegCell").css("border-radius", "50%");
-    $(".pegCell").css("background-color", "rgb(184, 184, 184)");
+    $(".pegCell").css("background-color", "rgb(137, 154, 185)");
 
     $(".color").each(function() {
         let color = $(this).attr("id");
@@ -67,8 +75,18 @@ console.log(codeColors);
         }
     });
 
+    $(".submit").click(function() {
+        // console.log(currentBoardCells);
+        for (let i = 0; i < 4;  i++) {
+            cellColor[i] = document.getElementById(currentBoardCells[i]).style.backgroundColor;
+        };
+        // console.log(cellColor);
+        checkWin();
+        return cellColor;
+    });
+
     function changeCurrentRow () {
-        currentRow = 1;
+        currentRow--;
         let multiplier = 4;
         currentBoardCells = [
             "board" + (currentRow * multiplier - 4),
@@ -84,32 +102,74 @@ console.log(codeColors);
             "peg" + (currentRow * multiplier - 1)
         ];
     };
-    function isValid(id) {
-        if(currentBoardCells.includes(id) && isWinner === false ) {
-            return true;
+
+    function changePegColors (a,c) {
+        let i = 0
+        for ( a; a > 0; a--) {
+            document.getElementById(currentPegCells[i]).style.background = "black";
+            i++;
+            // let randomNumber = Math.floor(Math.random() * 4) + 1;
+            // console.log(randomNumber, a);
+            // document.getElementsById(currentPegCells[randomNumber]).style.backgroundColor = "darkgreen";
+        };
+        for (c; c > 0; c--) {
+            document.getElementById(currentPegCells[i]).style.background = "white";
+            i++;
+        };
+    };
+
+    function getTheHint () {
+        let a = 0;
+        let b = 0;
+        let c;
+        for ( let i = 0; i < 4; i++ ) {
+            if(codeColors[i] === cellColor[i]) {
+            a++;}
         }
-        return false;
-    }
-
-    function checkWin() {
-        if (code[0] === cell1Color && 
-            code[1] === cell2Color &&
-            code[2] === cell3Color &&
-            code[3] === cell4Color) {
-                isWinner = true;
-                alert("Congrats, you've won! \n You can see the guessed code now!")
-                showTheCode ();
-            };
-            return isWinner;
-    }
-
-    function showTheCode () {
-        $("#secretColor1").css("background-color", code [0] );
-        $("#secretColor2").css("background-color", code [1] );
-        $("#secretColor3").css("background-color", code [2] );
-        $("#secretColor4").css("background-color", code [3] );
+        for ( let i = 0; i < 4; i++  ) {
+            if(codeColors[i] === cellColor[1] || 
+            codeColors[i] === cellColor[2] ||
+            codeColors[i] === cellColor[3] || 
+            codeColors[i] === cellColor[4]) {
+            b++;}
+        }
+        c = b - a;
+        console.log('number of exact shoots:', a, '\n number of left color shoots: ', c);
+        changePegColors(a,c);
     };
 
 
+    function isValid(id) {
+        if(currentBoardCells.includes(id) && isWinner === false 
+         ) {
+             return true;
+         }
+         return false;
+    };   
 
+    function checkWin() {
+      if (codeColors[0] === cellColor[0] && 
+          codeColors[1] === cellColor[1] &&
+          codeColors[2] === cellColor[2] &&
+          codeColors[3] === cellColor[3] ) {
+            isWinner = true;
+            getTheHint ();
+            showTheCode ();
+            alert("Congrats, you've won! \n You can see the guessed code now!")
+           } else if (currentRow === 1) {
+            showTheCode ();
+            alert("Sorry, you didn't guessed the code \n You can see solution now")
+           } else {
+            getTheHint ();
+            changeCurrentRow ();
+           }
+    };
+
+    function showTheCode () {
+        document.getElementById("s-color1").style.backgroundColor = codeColors[0];
+        document.getElementById("s-color2").style.backgroundColor = codeColors[1];
+        document.getElementById("s-color3").style.backgroundColor = codeColors[2];
+        document.getElementById("s-color4").style.backgroundColor = codeColors[3];
+        console.log(codeColors);
+    };
 });
