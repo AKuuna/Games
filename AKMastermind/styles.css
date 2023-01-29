@@ -1,0 +1,87 @@
+.boards{
+    border: 5px solid rgb(7, 6, 41);
+    background-color: rgb(22, 11, 80);
+    height: 680px;
+    width: 330px;
+    position: absolute;
+}
+
+.main-board{
+    display: grid;
+    height: 100%;
+    width: 260px;
+    float: left;
+}
+
+.side-board{
+    display: grid;
+    height: 100%;
+    width: 20%;
+    float: right;
+    margin-top: 0px;
+}
+
+.options{
+    margin-left: 360px;
+    position: absolute;
+
+}
+
+.code{
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(1, 50px);
+    height: 50px;
+    width: 200px;
+    border: 5px solid rgb(7, 6, 41);
+    margin: 0 auto;
+    margin-top: 0px;
+}
+
+.color-board{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 100px);
+    height: 300px;
+    width: 200px;
+    border: 5px solid rgb(7, 6, 41);
+    background-color: rgb(137, 154, 185);
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.current-color{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(4, 100px);
+    height: 50px;
+    width: 200px;
+    border: 5px solid rgb(7, 6, 41);
+    background-color: rgb(137, 154, 185);
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.secret-color{
+    background-color: rgb(137, 154, 185);
+}
+
+
+.submit{
+    height: 50px;
+    width: 180px;  
+    border: 5px solid rgb(7, 6, 41);
+    background-color: rgb(137, 154, 185);
+    opacity: 0.9;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 36px ;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+.submit:hover{
+    cursor:grab;
+    opacity: 1;
+}
+
