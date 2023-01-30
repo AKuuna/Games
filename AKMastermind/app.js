@@ -103,7 +103,7 @@ $(document).ready(function() {
         ];
     };
 
-    function changePegColors (a,c) {
+    function changePegColors (a,b) {
         let i = 0
         for ( a; a > 0; a--) {
             document.getElementById(currentPegCells[i]).style.background = "black";
@@ -112,7 +112,7 @@ $(document).ready(function() {
             // console.log(randomNumber, a);
             // document.getElementsById(currentPegCells[randomNumber]).style.backgroundColor = "darkgreen";
         };
-        for (c; c > 0; c--) {
+        for (b; b > 0; b--) {
             document.getElementById(currentPegCells[i]).style.background = "white";
             i++;
         };
@@ -121,21 +121,20 @@ $(document).ready(function() {
     function getTheHint () {
         let a = 0;
         let b = 0;
-        let c;
         for ( let i = 0; i < 4; i++ ) {
             if(codeColors[i] === cellColor[i]) {
             a++;}
         }
         for ( let i = 0; i < 4; i++  ) {
-            if(codeColors[i] === cellColor[1] || 
-            codeColors[i] === cellColor[2] ||
-            codeColors[i] === cellColor[3] || 
-            codeColors[i] === cellColor[4]) {
+            if(codeColors[i] !== cellColor[i] && 
+            (codeColors[i] === cellColor[0] ||
+            codeColors[i] === cellColor[1] ||
+            codeColors[i] === cellColor[2] || 
+            codeColors[i] === cellColor[3])) {
             b++;}
         }
-        c = b - a;
-        console.log('number of exact shoots:', a, '\n number of left color shoots: ', c);
-        changePegColors(a,c);
+        console.log('number of exact shoots:', a, '\n number of left color shoots: ', b);
+        changePegColors(a,b);
     };
 
 
@@ -155,17 +154,19 @@ $(document).ready(function() {
             isWinner = true;
             getTheHint ();
             showTheCode ();
-            alert("Congrats, you've won! \n You can see the guessed code now!")
+            setTimeout ( function () {
+                 alert("Congrats, you've won! \n You can see the guessed code now!"), 100});
            } else if (currentRow === 1) {
             showTheCode ();
-            alert("Sorry, you didn't guessed the code \n You can see solution now")
+            setTimeout ( function () { 
+                alert("Sorry, you didn't guessed the code \n You can see solution now"), 100});
            } else {
             getTheHint ();
             changeCurrentRow ();
            }
     };
 
-    function showTheCode () {
+     function showTheCode () {
         document.getElementById("s-color1").style.backgroundColor = codeColors[0];
         document.getElementById("s-color2").style.backgroundColor = codeColors[1];
         document.getElementById("s-color3").style.backgroundColor = codeColors[2];
