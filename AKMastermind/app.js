@@ -109,26 +109,34 @@ $(document).ready(function() {
             document.getElementById(currentPegCells[i]).style.background = "black";
             i++;
         };
-        let j = i;
         for ( b; b > 0; b--) {
-            document.getElementById(currentPegCells[j]).style.background = "white";
-            j++;
+            document.getElementById(currentPegCells[i]).style.background = "white";
+            i++;
         };
     };
 
     function getTheHint () {
         let a = 0;
         let b = 0;
+        //Other try 
+        //black peg
+        // for ( let i = 0; i < 4; i++ ) {
+        //     if(codeColors[i] === cellColor[i]){
+        //     a++;}}; 
+        // //white peg
+        //     for ( let i = 0; i < 4; i++ )
+        //     { for ( let j = i; j < 4; j++ ) {
+        //         if(codeColors[i] === cellColor[j] && codeColors[i] !== cellColor[i]) {
+        //     b++;}
         for ( let i = 0; i < 4; i++ ) {
-            if(codeColors[i] === cellColor[i]){
-            a++;} 
-            else if((codeColors[i] === cellColor[0] ||
+                if(codeColors[i] === cellColor[i]){
+                a++;}
+            else {if (codeColors[i] === cellColor[0]||
                     codeColors[i] === cellColor[1] ||
-                    codeColors[i] === cellColor[2] ||
-                    codeColors[i] === cellColor[3]) && (codeColors[i] !== cellColor[i])) {
-            b++;};
-        };
-
+                    codeColors[i] === cellColor[2]||
+                    codeColors[i] === cellColor[3]){
+                        b++;
+            }}}; 
         console.log('number of exact shoots:', a, '\n number of left color shoots: ', b);
         changePegColors(a,b);
     };
