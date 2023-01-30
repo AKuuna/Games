@@ -123,23 +123,28 @@ $(document).ready(function() {
             }
             return acc;
         }, []); 
+        console.log(newCodeColors);
   
         let a = 0;
         let b = 0;
         for ( let i = 0; i < 4; i++ ) {
                 if(codeColors[i] === cellColor[i]){
                 a++;}
-            else if (newCodeColors[i] ===cellColor[0]||
-                    newCodeColors[i] === cellColor[1] ||
-                    newCodeColors[i] === cellColor[2]||
-                    newCodeColors[i] === cellColor[3]) {
+            else if ((newCodeColors[i]===codeColors[i])&&(
+                    codeColors[i] ===cellColor[0]||
+                    codeColors[i] === cellColor[1]||
+                    codeColors[i] === cellColor[2]||
+                    codeColors[i] === cellColor[3])) {
                      b++;}
+            else for (let j = 0; j < 4; j++){
+                  if(newCodeColors[i] === cellColor[j]){
+                    b++;}
             }; 
 
         console.log('number of exact shoots:', a, '\n number of left color shoots: ', b);
         changePegColors(a,b);
     };
-
+};
 
     function isValid(id) {
         if(currentBoardCells.includes(id) && isWinner === false 
