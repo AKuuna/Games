@@ -115,28 +115,27 @@ $(document).ready(function() {
         };
     };
 
+
     function getTheHint () {
+        let newCodeColors = codeColors.reduce(function (acc, curr) {
+            if (acc.indexOf(curr) === -1) {
+                acc.push(curr)
+            }
+            return acc;
+        }, []); 
+  
         let a = 0;
         let b = 0;
-        //Other try 
-        //black peg
-        // for ( let i = 0; i < 4; i++ ) {
-        //     if(codeColors[i] === cellColor[i]){
-        //     a++;}}; 
-        // //white peg
-        //     for ( let i = 0; i < 4; i++ )
-        //     { for ( let j = i; j < 4; j++ ) {
-        //         if(codeColors[i] === cellColor[j] && codeColors[i] !== cellColor[i]) {
-        //     b++;}
         for ( let i = 0; i < 4; i++ ) {
                 if(codeColors[i] === cellColor[i]){
                 a++;}
-            else {if (codeColors[i] === cellColor[0]||
-                    codeColors[i] === cellColor[1] ||
-                    codeColors[i] === cellColor[2]||
-                    codeColors[i] === cellColor[3]){
-                        b++;
-            }}}; 
+            else if (newCodeColors[i] ===cellColor[0]||
+                    newCodeColors[i] === cellColor[1] ||
+                    newCodeColors[i] === cellColor[2]||
+                    newCodeColors[i] === cellColor[3]) {
+                     b++;}
+            }; 
+
         console.log('number of exact shoots:', a, '\n number of left color shoots: ', b);
         changePegColors(a,b);
     };
