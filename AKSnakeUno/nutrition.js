@@ -1,20 +1,20 @@
 import { onSnake, expandSnake } from "./snake.js";
-
+import { randomGridPosition } from "./grid.js";
 
 let nutrition = {
     x: 10,
     y: 10
 };
 
-const EXPANSION_RATE = 1;
+const EXPANSION_RATE = 3;
 
 export function update () {
     if(onSnake(nutrition)){
         expandSnake(EXPANSION_RATE);
-        nutrition = {x :10, y: 10};
+        nutrition = getRandomNutritionPosition();
     }
 
-}
+};
 
 export function draw (gameBoard) {
         const nutritionElement = document.createElement('div');
@@ -22,4 +22,14 @@ export function draw (gameBoard) {
         nutritionElement.style.gridColumnStart = nutrition.x;
         nutritionElement.classList.add('nutrition');
         gameBoard.appendChild(nutritionElement);
+};
+
+
+function getRandomNutritionPosition () {
+    let newNutritionPosition ;
+    while (newNutritionPosition == null || onSnake(newNutritionPosition)) {
+        newNutritionPosition = randomGridPosition();
+    } 
+    return newNutritionPosition;
+
 };

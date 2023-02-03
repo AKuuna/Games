@@ -47,7 +47,7 @@ function samePositions (position1, position2) {
 
 function addParts() {
     for (let i = 0; i < newParts; i++) {
-        snakeBody[snakeBody.lenght] ={...snakeBody[snakeBody.lenght - 1]};
+        snakeBody.push({...snakeBody[snakeBody.lenght - 1]});
     }
     newParts = 0;
 }
