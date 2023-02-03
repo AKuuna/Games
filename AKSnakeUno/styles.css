@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(33, 33, 33);
+    margin: 0;
+}
+
+#gameboard {
+    height: 100vmin;
+    width: 100vmin;
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: repeat(27, 1fr);
+    grid-template-rows: repeat(27, 1fr);
+}
+
+.snake{
+    background-color: blueviolet;
+    border: .20vmin solid rgb(51, 3, 95)
+
+}
+
+.nutrition{
+    background-color: greenyellow;
+    border: .20vmin solid rgb(9, 69, 17)
+}
