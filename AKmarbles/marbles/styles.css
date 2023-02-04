@@ -1,0 +1,62 @@
+
+#game{
+    position: relative;
+    height: 90vh;
+    width: 120vh;
+    background-color: rgb(18, 7, 32);
+    border: .5vh solid rgb(115, 115, 115);
+}
+
+#board-game{
+    position: absolute;
+    top: 4vh;
+    left: 4vh;
+    background-color: rgb(63, 64, 86);
+    border: .5vh solid rgb(115, 115, 115);
+    display: grid;
+    height: 80vh;
+    width: 80vh;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+#menu{
+    position: absolute;
+    top: 4vh;
+    right:4vh;
+    background-color: rgb(63, 64, 86);
+    border: .5vh solid rgb(115, 115, 115);
+    display: flexbox;
+    height: 60vh;
+    width: 25vh;
+}
+
+#refresh-menu{
+    position: absolute;
+    bottom: 5vh;
+    right:4vh;
+    background-color: rgb(63, 64, 86);
+    border: .5vh solid rgb(115, 115, 115);
+    
+    height: 13vh;
+    width: 25vh;
+}
+
+#refresh-btn{
+    position: relative;
+    display: block;
+    top: 20%;
+    left: 10%;
+    height: 8vh;
+    width: 20vh;
+    background-color: rgb(63, 64, 86);
+    border: .5vh solid rgb(115, 115, 115);
+}
+
+
+.menu-text{
+    text-align: center;
+    font-size: 3vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: deepskyblue;
+}
