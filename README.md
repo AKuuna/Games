@@ -7,7 +7,7 @@ These games are created with mindset to be played on web.
 
 <h2>Sapper</h2>
 
-[Sapper Game](../AKSapper/)
+[Sapper Game](../Games/tree/main/AKSapper/)
 
 Clone of a well known Sapper from Windows basic games.
 
@@ -25,7 +25,7 @@ From lowest row you can fill 4 dots with colors from color chart. When your colo
 Program will respond with some hint. Black dot means one color is placed in correct position, white dot informs that one color exist but is not in is't proper placement. 
 Next guess is to be filled in one row above.
 
-[Master Mind Game](../AKMastermind/)
+[Master Mind Game](../Games/tree/main/AKMastermind/)
 
 ![alt text](https://github.com/AKuuna/Games/blob/main/screenshots/mastermind_screenshot.png "MasterMind")
 
@@ -33,7 +33,7 @@ Next guess is to be filled in one row above.
 
 No need to prolong, start your snake with using arrows!
 
-[Snake Game](../AKSnakeUno/)
+[Snake Game](../Games/tree/main/AKSnakeUno/)
 
 ![alt text](https://github.com/AKuuna/Games/blob/main/screenshots/snake_screenshoot.png "Snake")
 
