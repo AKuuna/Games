@@ -31,9 +31,24 @@ Next guess is to be filled in one row above.
 
 <h2>Snake</h2>
 
-No need to prolong, start your snake with using arrows!
+No need to prolong, start your snake with using arrows! 
+This one has to be opened on live server right now:) 
 
 [Snake Game](https://github.com/AKuuna/Games/tree/main/AKSnakeUno/index.html)
 
 ![alt text](https://github.com/AKuuna/Games/blob/main/screenshots/snake_screenshoot.png "Snake")
+
+Plans for upgrades:
+* refreshing Sapper game by adding there menu
+* better answers tips on Mastermind game
+* adding options to Snake game
+    + fast forward movement
+    + adding some levels?
+    + adding teleport on sides
+    + adding some blocades
+    + adding high score and maybe restart?
+* marble game on a way
+* puzzle slider game
+
+
 
